@@ -43,6 +43,7 @@ ssh -i "your-key.pem" ec2-user@your-machine-hostname
 4. Run the command from a PowerShell or Bash Terminal from a path where your `.pem` private key file is located.
 5. Upon success, you should gain Terminal access to your machine. 
 
+
 #### Install Docker in your instance (only if needed. In your machine Docker is already installed)
 
 1. Update the installed packages and package cache on your instance.
