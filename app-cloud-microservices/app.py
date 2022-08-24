@@ -7,7 +7,6 @@ import boto3
 
 con = mysql.connector.connect(
     host=os.environ['SQL_HOST'],
-    # host='database-3.c34a2z7p5ba9.eu-north-1.rds.amazonaws.com',
     user="root",
     password="secret1234",
     database="videos"
@@ -15,7 +14,7 @@ con = mysql.connector.connect(
 
 cur = con.cursor()
 cur.execute("""
-    CREATE TABLE IF NOT EXISTS videos(
+    CREATE TABLE videos(
         client_ip varchar(255),
         title varchar(255),
         videoId varchar(255),
@@ -27,6 +26,10 @@ app = Flask(__name__, static_url_path='')
 
 @app.route("/")
 def home():
+    """
+    docs for thus function
+    :return:
+    """
     return render_template('index.html')
 
 
