@@ -4,9 +4,6 @@
 
 
 
-
-
-
 Throughout this tutorial, we will deploy the YouTube app from the previous class in AWS cloud. Slowly, buy surely, we will upgrade the app to fit modern application architecture, i.e. being highly available, scalable and fault tolerant.
 
 In the first phase, we will deploy a monolithic app on a single EC2 instance. The app stores the downloaded YouTube videos in S3, and users videos in MySQL database managed by RDS.
