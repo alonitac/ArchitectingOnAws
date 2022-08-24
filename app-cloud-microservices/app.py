@@ -6,8 +6,8 @@ import mysql.connector
 import boto3
 
 con = mysql.connector.connect(
-    # host=os.environ['SQL_HOST'],
-    host='database-3.c34a2z7p5ba9.eu-north-1.rds.amazonaws.com',
+    host=os.environ['SQL_HOST'],
+    # host='database-3.c34a2z7p5ba9.eu-north-1.rds.amazonaws.com',
     user="root",
     password="secret1234",
     database="videos"
