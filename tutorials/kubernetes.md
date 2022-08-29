@@ -22,7 +22,9 @@ kubectl proxy
 ```
 This command proxies the whole cluster API into your local machine.
 6. Open a web browser and go to the K8S dashboard: http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#!/login
+
 7. The token can be found [here](https://docs.google.com/document/d/1LyIv38irNgaPf63yAG40hDzNj20-u3EMIJRc0CyclQU/edit?usp=sharing).
+
 8. Deploy the chat app and the worker. Make sure you specify the relevant env vars:
     - `<your-namespace>` - your cluster namespace
     - `<sqs-region>` - the region of your SQS queue
@@ -35,11 +37,11 @@ kubectl apply -f k8s/chat-app-worker.yaml
 ```
 If you don't see those files in your source code, execute `git pull` from your source code directory.  
 
-8. In order to visit your app you need to forward the service to be available in your local machine. You can do it using the `kubectl port-forward` command:
+9. In order to visit your app you need to forward the service to be available in your local machine. You can do it using the `kubectl port-forward` command:
 ```shell
 kubectl port-forward -n <your-namespace> svc/chat-app-webserver-service 8080:8080
 ```
-9. Open a web browser and visit the app in `http://localhost:8080`
+10. Open a web browser and visit the app in `http://localhost:8080`
 
 ## Perform a rolling update 
 
