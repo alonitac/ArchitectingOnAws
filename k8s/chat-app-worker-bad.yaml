@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chat-app-worker
+  namespace: <your-namespace> # Your namespace here
+  labels:
+    app: chat-app-worker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chat-app-worker
+  template:
+    metadata:
+      labels:
+        app: chat-app-worker
+    spec:
+      terminationGracePeriodSeconds: 30
+      containers:
+        - name: chat-app-worker
+          image: 700935310038.dkr.ecr.us-east-1.amazonaws.com/chat-app-worker:bad
+          env:
+            - name: BUCKET_NAME
+              value: <s3-bucket>
+            - name: AWS_REGION   # region of SQS queue
+              value: <sqs-region>
+            - name: QUEUE_NAME
+              value: <sqs-queue-name>

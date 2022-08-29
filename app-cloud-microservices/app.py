@@ -6,8 +6,7 @@ import mysql.connector
 import boto3
 
 con = mysql.connector.connect(
-    # host=os.environ['SQL_HOST'],
-    host='database-3.c34a2z7p5ba9.eu-north-1.rds.amazonaws.com',
+    host=os.environ['SQL_HOST'],
     user="root",
     password="secret1234",
     database="videos"
@@ -28,6 +27,17 @@ app = Flask(__name__, static_url_path='')
 @app.route("/")
 def home():
     return render_template('index.html')
+
+
+health_count = 1
+
+@app.route("/healthz")
+def health():
+    global health_count
+    health_count += 1
+    if health_count > 10:
+        return 'Unhealthy', 500
+    return 'OK', 200
 
 
 @app.route("/youtube", methods=['POST'])
