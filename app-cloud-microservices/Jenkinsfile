@@ -19,10 +19,11 @@ pipeline {
         }
         stage ('Starting ART job') {
             steps {
-                build job: 'your-job-name',
+                build job: 'Worker Release',
                 parameters: [
                     string(name: 'docker image', value: 'docker')
-                ]
+                ],
+                wait: false
             }
         }
     }
