@@ -18,10 +18,12 @@ pipeline {
             }
         }
         stage ('Starting ART job') {
-            build job: 'your-job-name',
+            steps {
+                build job: 'your-job-name',
                 parameters: [
-                    string(name: 'docker image', value: 'docker'),
+                    string(name: 'docker image', value: 'docker')
                 ]
             }
+        }
     }
 }
