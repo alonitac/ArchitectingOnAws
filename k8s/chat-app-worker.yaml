@@ -2,11 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: chat-app-worker
-  namespace: <your-namespace> # Your namespace here
+  namespace: alonit-ns # Your namespace here
   labels:
     app: chat-app-worker
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: chat-app-worker
@@ -21,8 +21,13 @@ spec:
           image: 700935310038.dkr.ecr.us-east-1.amazonaws.com/chat-app-worker:0.0.1
           env:
             - name: BUCKET_NAME
-              value: <s3-bucket>
+              value: iec-alonit-22
             - name: AWS_REGION   # region of SQS queue
-              value: <sqs-region>
+              value: eu-north-1
             - name: QUEUE_NAME
-              value: <sqs-queue-name>
+              value: alonit-queue
+          resources:
+            limits:
+              cpu: "50m"
+            requests:
+              cpu: "10m"

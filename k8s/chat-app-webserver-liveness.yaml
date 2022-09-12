@@ -1,12 +1,12 @@
-  apiVersion: apps/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: chat-app-webserver
-  namespace: <your-namespace> # Your namespace here
+  namespace: alonit-ns # Your namespace here
   labels:
     app: chat-app-webserver
 spec:
-  replicas: 1
+  replicas: 5
   selector:
     matchLabels:
       app: chat-app-webserver
@@ -20,28 +20,16 @@ spec:
         - name: chat-app-webserver
           image: 700935310038.dkr.ecr.us-east-1.amazonaws.com/chat-app-webserver:0.0.1
           env:
-          - name: AWS_REGION   # region of SQS queue
-            value: <sqs-region>
-          - name: QUEUE_NAME
-            value: <sqs-queue-name>
-          - name: SQL_HOST
-            value: <mysql-db-name>
-            livenessProbe:
-              httpGet:
-                path: /healthz
-                port: 3000
-              initialDelaySeconds: 3
-              periodSeconds: 3
-              failureThreshold: 3
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: chat-app-webserver-service
-  namespace: <your-namespace>
-spec:
-  selector:
-    app: chat-app-webserver
-  ports:
-    - port: 8080
-      targetPort: 8080
+            - name: AWS_REGION   # region of SQS queue
+              value: eu-north-1
+            - name: QUEUE_NAME
+              value: alonit-queue
+            - name: SQL_HOST
+              value: alonit-db.c34a2z7p5ba9.eu-north-1.rds.amazonaws.com
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+            initialDelaySeconds: 3
+            periodSeconds: 3
+            failureThreshold: 3
