@@ -17,14 +17,15 @@ pipeline {
                 sh ''
             }
         }
-        stage ('Starting ART job') {
-            steps {
-                build job: 'test',
-                parameters: [
-                    string(name: 'docker image', value: 'docker')
-                ],
-                wait: false
-            }
-        }
+
+//         stage ('Starting ART job') {
+//             steps {
+//                 build job: 'test',
+//                 parameters: [
+//                     string(name: 'docker image', value: 'docker')
+//                 ],
+//                 wait: false
+//             }
+//         }
     }
 }
