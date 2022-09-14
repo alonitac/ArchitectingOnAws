@@ -16,7 +16,7 @@ pipeline {
             steps {
               build (
                job: 'BotDeploy',
-               parameters: [text(name: 'dockerImage', value: ${BUILD_TAG})],
+               parameters: [text(name: 'dockerImage', value: BUILD_TAG)],
                wait: false
               )
 
