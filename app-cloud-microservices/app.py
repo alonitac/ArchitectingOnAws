@@ -70,6 +70,7 @@ def get_youtube():
         }), 200
 
 
+
 if __name__ == '__main__':
     sqs = boto3.resource('sqs', region_name=os.environ['AWS_REGION'])
     workers_queue = sqs.get_queue_by_name(QueueName=os.environ['QUEUE_NAME'])
