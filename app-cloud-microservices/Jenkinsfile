@@ -18,6 +18,7 @@ pipeline {
             }
         }
 
+
 //         stage ('Starting ART job') {
 //             steps {
 //                 build job: 'test',
