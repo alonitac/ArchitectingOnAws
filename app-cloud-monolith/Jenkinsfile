@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'echo building ${BUILD_TAG}'
+                sh 'set'
             }
         }
         stage('Test') {
