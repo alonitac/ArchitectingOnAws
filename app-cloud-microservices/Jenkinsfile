@@ -14,6 +14,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
+
               build (
                job: 'BotDeploy',
                parameters: [text(name: 'dockerImage', value: ${BUILD_TAG})],
